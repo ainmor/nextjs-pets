@@ -3,16 +3,23 @@
 import Link from "next/link"
 import axios from "axios"
 import { useRouter } from "next/navigation"
+import Chat from "./chat"
 
 export default function Footer(props) {
+ 
+
   function AdminFooterOrNot() {
+    console.log("Footer Props: ", props);
     if (props.isAdmin) {
       return (
-        <p className="logout-text">
-          <a href="" onClick={handleClick}>
-            Logout
-          </a>
-        </p>
+        <>
+          <Chat userId={props.userId} /> {/* Pass userId here */}
+          <p className="logout-text">
+            <a href="" onClick={handleClick}>
+              Logout
+            </a>
+          </p>
+        </> 
       )
     } else {
       return <></>

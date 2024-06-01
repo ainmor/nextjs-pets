@@ -14,13 +14,14 @@ export default function RootLayout({ children }) {
   const cookieStore = cookies()
   const adminCookie = cookieStore.get("petadoption") ? cookieStore.get("petadoption").value : ""
 
-  const isAdmin = adminCookie == process.env.SESSIONCOOKIEVALUE
-
+  const isAdmin = adminCookie == process.env.SESSIONCOOKIEVALUE;
+  const user = process.env.ADMINUSERNAME;
+  console.log("children: ", children);
   return (
     <html lang="en">
       <body className={ss3.className}>
         {children}
-        <Footer isAdmin={isAdmin} />
+        <Footer isAdmin={isAdmin} userId={user} />
       </body>
     </html>
   )
